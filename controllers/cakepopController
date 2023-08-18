@@ -4,8 +4,9 @@ const Cakepop = require("../models/cakepop");
 const Order = require("../models/order");
 
 
-router.get("/", (req, res) =>{
-    res.render("hello")
+router.get("/", async (req, res) =>{
+    let cakepops = await Cakepop.find();
+    res.render("cakepop/index.ejs", { cakepops });
 });
 
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
-//const expressLayouts = require("express-ejs-layouts");
+const expressLayouts = require("express-ejs-layouts");
 const authRoutes = require("./controllers/authController");
 const session = require("express-session");
 const cakepopRoutes = require("./controllers/cakepopController");
@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 
 //middlewares
 app.use(express.static("public"));
-//app.use(expressLayouts);
+app.use(expressLayouts);
 app.use(session({ secret: "timeout", cookie: { maxAge: 3600000 }}));
 
 
