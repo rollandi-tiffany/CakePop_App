@@ -9,5 +9,48 @@ router.get("/", async (req, res) =>{
     res.render("cakepop/index.ejs", { cakepops });
 });
 
+router.get("/seed", async (req, res) =>{
+    await Order.deleteMany({});
+    await Cakepop.deleteMany({});
+    let seededCakepops = await Cakepop.create([
+        {
+            name: "Vanilla Cakepop",
+            description: "Delicious and Creamy",
+            image: "https//loveeveryplate.com/wp-content/uploads/2021/03/IMG_4334-720x1080.jpg",
+            price: 2,
+        },
+        {
+            name: "Chocolate Cakepop",
+            description: "Delicious and Chocolatey",
+            image: "https://basicswithbails.com/wp-content/uploads/2023/03/cake-pop-on-lollipop-stick.jpg",
+            price: 2,
+        },
+        {
+            name: "Red Velvet Cakepop",
+            description: "Delicious Soft Goodness",
+            image: "https://chocolatewithgrace.com/wp-content/uploads/2019/01/Red-Velvet-Cake-Balls-1.jpg",
+            price: 2,
+
+        },
+
+    ]);
+    res.send(seededCakepops);
+});
+
+
+
+router.post("/order", async (req, res)=>{
+    let cakepops = await Cakepop.find({_id: { $in: req.body.cakepops }});
+    req.body.userId = req.session.userId;
+
+    let total = 0;
+    req.body.cakepops.forEach(
+        (cakepop) =>
+        (total += cakepops.find((c) =>{
+            return c._id.toString() == cakepop;
+        }).price)
+    );
+    console.log(total);
+})
 
 module.exports = router;
