@@ -3,7 +3,22 @@ const app = express();
 const PORT = 3000;
 const expressLayouts = require("express-ejs-layouts");
 
+app.set("view engine", "ejs");
 
+//middlewares
+app.use(express.static("public"));
+app.use(expressLayouts);
+
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//app.use(authRoutes);
+
+app.get("/", (req, res) => {
+    res.render("home.ejs");
+});
 
 
 
