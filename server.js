@@ -6,6 +6,7 @@ const authRoutes = require("./controllers/authController");
 const session = require("express-session");
 const cakepopRoutes = require("./controllers/cakepopController");
 
+
 app.set("view engine", "ejs");
 
 //middlewares
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(authRoutes);
+app.use(cakepopRoutes);
 
 app.get("/", (req, res) => {
     res.render("home.ejs");
