@@ -4,7 +4,7 @@ const Cakepop = require("../models/cakepop");
 const Order = require("../models/order");
 
 
-router.get("/", async (req, res) =>{
+router.get("/cakepop", async (req, res) =>{
     let cakepops = await Cakepop.find();
     res.render("cakepop/index.ejs", { cakepops });
 });
@@ -16,7 +16,7 @@ router.get("/seed", async (req, res) =>{
         {
             name: "Vanilla Cakepop",
             description: "Delicious and Creamy",
-            image: "https//loveeveryplate.com/wp-content/uploads/2021/03/IMG_4334-720x1080.jpg",
+            image: "https://basicswithbails.com/wp-content/uploads/2022/04/easy-cake-pops-recipe-scaled.jpg",
             price: 2,
         },
         {
@@ -40,14 +40,14 @@ router.get("/seed", async (req, res) =>{
 
 
 router.post("/order", async (req, res)=>{
-    let cakepops = await Cakepop.find({_id: { $in: req.body.cakepops }});
+    let cakepops = await Cakepop.find({id: { $in: req.body.cakepops }});
     req.body.userId = req.session.userId;
 
     let total = 0;
     req.body.cakepops.forEach(
         (cakepop) =>
         (total += cakepops.find((c) =>{
-            return c._id.toString() == cakepop;
+            return c.id.toString() == cakepop;
         }).price)
     );
     console.log(total);

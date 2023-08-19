@@ -22,4 +22,11 @@ submit.addEventListener("click", async (e)=>{
             "Content-Type": "application/json",
         },
     });
-})
+    let response = await res.json();
+    if (response) {
+        order = {
+            cakepops: [],
+        };
+        window.location = `/cakepop/order/${response._id}`;
+    }
+});

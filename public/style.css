@@ -37,12 +37,11 @@ a {
    
 }
 
-body {
-    background-image:  url(https://www.cakepops.com/cdn/shop/products/Chocolate_Vanilla_Red_Velvet_Cake_Pops_Classic_Cake_Pops_Classic_Flavors.jpg?v=1661967821&width=1946);
-    background-size: 100%;
-    
-
-    
+h2 {
+    color: pink;
 }
 
-
+.cakepop {
+    color: purple;
+    font-size: 20px;
+}
