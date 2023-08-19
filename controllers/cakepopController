@@ -55,8 +55,16 @@ console.log(total);
 req.body.total = total;
 let newOrder = await Order.create(req.body);
 
-//res.json(newOrder);
-res.redirect("cakepop/order");
+res.json(newOrder);
+//res.redirect("/order");
+});
+
+router.delete("/:id", async (req, res)=> {
+    const id = req.params.id
+    await Cakepop.findByIdAndRemove(req.params.id)
+    console.log("hello")
+    res.redirect("/cakepop");
+    
 });
 
 router.get("/order/:id", async (req, res) =>{
@@ -74,6 +82,16 @@ router.get("/order", async (req, res) =>{
     console.log(orders);
     res.render("order/index.ejs", { orders });
 });
+
+
+
+router.get("/cakepop/:id/edit", async (req, res)=>{
+    const id = req.params.id
+    const cakepop = await Cakepop.findById(Id)
+
+    res.render("cakepop/show.ejs")
+
+})
 
 
 

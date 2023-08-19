@@ -5,7 +5,7 @@ const expressLayouts = require("express-ejs-layouts");
 const authRoutes = require("./controllers/authController");
 const session = require("express-session");
 const cakepopRoutes = require("./controllers/cakepopController");
-
+const methodOverride = require("method-override");
 
 app.set("view engine", "ejs");
 
@@ -13,6 +13,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(expressLayouts);
 app.use(session({ secret: "timeout", cookie: { maxAge: 3600000 }}));
+app.use(methodOverride("_method"));
 
 
 
