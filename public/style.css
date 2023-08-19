@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    color: pink;
+    color: palevioletred;
     font-size: 90px;
     
 }
@@ -12,13 +12,14 @@ ul {
 
 li {
    display:inline-block;
-   margin-right: 100px;
+   margin-inline-end: 20px;
+   margin-inline-start: 20px;
    padding: 20px 30px;
    color: palevioletred;
    background-color: pink;
    border-radius: 5px;
    border: none;
-   font-size: 30px;
+   font-size: 40px;
    text-align: center;
    
     
@@ -31,9 +32,9 @@ a {
     
 }
 
-#bottom-nav {
-    position: fixed;
-    bottom: 0;
+#nav {
+    text-align: center;
+ 
    
 }
 
@@ -44,4 +45,18 @@ h2 {
 .cakepop {
     color: purple;
     font-size: 20px;
+}
+
+.main-page {
+    background-image: url("https://www.brides.com/thmb/MDwHSl6FVB12syCCckQR_Sv1x6E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/re-ec0b98d4f50b433da3052b6d8744dacc.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+   
+ 
 }
