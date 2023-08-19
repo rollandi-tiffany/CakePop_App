@@ -16,7 +16,7 @@ router.get("/seed", async (req, res) =>{
         {
             name: "Vanilla Cakepop",
             description: "Delicious and Creamy",
-            image: "https://basicswithbails.com/wp-content/uploads/2022/04/easy-cake-pops-recipe-scaled.jpg",
+            image: "https://i.imgur.com/V9oM7EB.jpg",
             price: 2,
         },
         {
@@ -40,20 +40,23 @@ router.get("/seed", async (req, res) =>{
 
 
 router.post("/order", async (req, res)=>{
-    let cakepops = await Cakepop.find({id: { $in: req.body.cakepops }});
+    let cakepops = await Cakepop.find({ _id: { $in: req.body.cakepops }});
     req.body.userId = req.session.userId;
 
+    console.log(cakepops.price);
+
     let total = 0;
-    req.body.cakepops.forEach(
-        (cakepop) =>
-        (total += cakepops.find((c) =>{
-            return c.id.toString() == cakepop;
-        }).price)
-    );
-    console.log(total);
-    req.body.total = total;
-    let newOrder = await Order.create(req.body);
-    res.json(newOrder);
+    req.body.cakepops.forEach((cakepop)=> (total += cakepops.find((c)=>{
+        return c._id.toString() == cakepop;
+    }).price)
+);
+
+console.log(total);
+req.body.total = total;
+let newOrder = await Order.create(req.body);
+
+//res.json(newOrder);
+res.redirect("cakepop/order");
 });
 
 router.get("/order/:id", async (req, res) =>{

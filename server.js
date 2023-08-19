@@ -16,11 +16,24 @@ app.use(session({ secret: "timeout", cookie: { maxAge: 3600000 }}));
 
 
 
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(authRoutes);
 app.use(cakepopRoutes);
+
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+mongoose.connect(process.env.DATABASE_URL);
+app.get('/dburl', (request, response) => {
+    response.send(`My connection string is: ${process.env.DATABASE_URL}`)
+  });
+mongoose.connection.on("connected", ()=> console.log("yay connected"));
+mongoose.connection.on("error", ()=> console.log("oh no error"));
+
 
 app.get("/", (req, res) => {
     res.render("home.ejs");

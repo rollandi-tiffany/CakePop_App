@@ -1,4 +1,4 @@
-const mongoose = require("../db/connection");
+const mongoose = require("mongoose");
 
 const cakepopSchema = new mongoose.Schema({
     name: String,

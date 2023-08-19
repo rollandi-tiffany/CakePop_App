@@ -1,4 +1,4 @@
-const mongoose = require("../db/connection");
+const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
     userId: { ref: "User", type: mongoose.Schema.Types.ObjectId },
