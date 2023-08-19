@@ -1,8 +1,8 @@
 <% orders.forEach(order => { %>
 <div class="order">
-    <h3>Order for <%= order.userId.name %>
+    <h3>Order For <%= order.userId.name %>
     </h3>
-    <h4>Total Amount: <%= order.total %> 
+    <h4>Total Amount $ <%= order.total %> 
     </h4>
     <% order.cakepops.forEach( cakepop =>{%>
         <div class="cakepop">

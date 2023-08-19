@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    color: palevioletred;
+    color: purple;
     font-size: 90px;
     
 }
@@ -39,7 +39,9 @@ a {
 }
 
 h2 {
-    color: pink;
+    color: palevioletred;
+    background-color: aquamarine;
+    height: 100hv;
 }
 
 .cakepop {
@@ -55,8 +57,14 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.order {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
     
-    
-   
- 
+    font-weight: bold;
+    color: darkmagenta;
+    font-size: 30px;
 }

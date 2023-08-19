@@ -1,0 +1,15 @@
+<h3>Order For <%= order.userId.name %> 
+</h3>
+<h4>Total Amount: <%= order.total %> 
+</h4>
+
+<% order.cakepops.forEach( cakepop =>{%>
+    <div>
+        <p>
+            <%= cakepop.name %> $ <%= cakepop.price %>
+        </p>
+        <p>
+            <%= cakepop.description %>
+        </p>
+    </div>
+<% }) %>
