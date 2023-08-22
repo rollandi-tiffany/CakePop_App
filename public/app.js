@@ -12,6 +12,17 @@ allButtons.forEach((button)=>{
     });
 });
 
+// const packButton = document.querySelectorAll(".packBtn");
+// packButton.forEach((button)=>{
+//     button.addEventListener("click", (e)=>{
+//         const cakepopId = e.srcElement.id;
+//         const packPrice = Number(e.srcElement.getAttribute("data-price"));
+//         order.cakepops.push(cakepopId);
+//         order.total += packPrice;
+//     });
+// });
+
+
 const submit = document.querySelector("#submit");
 
 submit.addEventListener("click", async (e)=>{
